@@ -7,7 +7,8 @@
         public string? Decription { get; set; }
         public int Priority { get; set; }
         public int Status { get; set; }
-        public Project? Project { get; set; }
+        public Project Project { get; set; }
+        public int ProjectId { get; set; }
 
         //enum: ToDo / InProgress / Done
     }
