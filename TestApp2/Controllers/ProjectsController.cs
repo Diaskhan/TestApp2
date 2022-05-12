@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Gridify;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -118,6 +119,13 @@ namespace TestApp2.Controllers
         private bool ProjectExists(int id)
         {
             return (_context.Projects?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+
+        [HttpGet("GetPaging")]
+        public Paging<Data.Project> GetPaging([FromQuery] GridifyQuery query)
+        {
+            return _context.Projects.Gridify(query);
         }
     }
 }
