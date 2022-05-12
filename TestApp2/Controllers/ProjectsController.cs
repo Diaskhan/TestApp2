@@ -123,9 +123,9 @@ namespace TestApp2.Controllers
 
 
         [HttpGet("GetPaging")]
-        public Paging<Data.Project> GetPaging([FromQuery] GridifyQuery query)
+        public Paging<Data.Project>? GetPaging([FromQuery] GridifyQuery query)
         {
-            return _context.Projects.Gridify(query);
+            return _context.Projects?.Gridify(query);
         }
     }
 }
