@@ -89,9 +89,9 @@ namespace TestApp2.Controllers
           {
               return Problem("Entity set 'TestContext.Tasks'  is null.");
           }
-            var project=_context.Projects.FirstOrDefault(x => x.Id==task.ProjectId);
+            //var project=_context.Projects.FirstOrDefault(x => x.Id==task.ProjectId);
 
-            if (project == null) {
+            if (_context.Projects?.FirstOrDefault(x => x.Id == task.ProjectId) == null) {
                 return Problem("projectid not finded");
 
             }

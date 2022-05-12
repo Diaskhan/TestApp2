@@ -20,7 +20,19 @@ namespace TestApp2.Data
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
                 optionsBuilder.UseSqlServer(_configuration.GetConnectionString("TestContext"));
+
             }
+        //    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //    {
+        //        modelBuilder.Entity<Project>()
+        //            .Property(b => b.ProjectStatus)
+        //            .HasConversion(x => (int)x, x => (ProjectStatus)x);
+
+        //        modelBuilder.Entity<Task>()
+        //            .Property(b => b.TaskStatus)
+        //            .HasConversion(x => (int)x, x => (TaskStatus)x);
+
+        //}
 
     }
     
