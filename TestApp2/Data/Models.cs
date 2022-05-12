@@ -1,4 +1,6 @@
-﻿namespace TestApp2.Data
+﻿using System.Text.Json.Serialization;
+
+namespace TestApp2.Data
 {
     public class Task
     {
@@ -7,8 +9,14 @@
         public string? Decription { get; set; }
         public int Priority { get; set; }
         public int Status { get; set; }
-        public Project Project { get; set; }
         public int ProjectId { get; set; }
+        [JsonIgnore]
+        public virtual Project? Project { get; set; }
+
+        public  Task(){ 
+        
+        }
+
 
         //enum: ToDo / InProgress / Done
     }
@@ -20,8 +28,6 @@
         public DateTime StartDate { get; set; }
         public DateTime CompleteDate { get; set; }
         public int Status { get; set; }
-        
-        //the current status of the project (enum: NotStarted, Active, Completed)
 
     }
 }

@@ -12,8 +12,8 @@ using TestApp2.Data;
 namespace TestApp2.Migrations
 {
     [DbContext(typeof(TestContext))]
-    [Migration("20220512145911_init")]
-    partial class init
+    [Migration("20220512191716_ReInit")]
+    partial class ReInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,7 +66,7 @@ namespace TestApp2.Migrations
                     b.Property<int>("Priority")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -83,7 +83,9 @@ namespace TestApp2.Migrations
                 {
                     b.HasOne("TestApp2.Data.Project", "Project")
                         .WithMany()
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Project");
                 });
